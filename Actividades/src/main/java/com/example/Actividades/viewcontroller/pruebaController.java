@@ -12,7 +12,7 @@ public class pruebaController {
     String inicio(){
         return "index";
     }
-
+//JK
     @RequestMapping("/usuario/{name}")
     String usuario(Model model, @PathVariable String name){
         model.addAttribute("name",name);
