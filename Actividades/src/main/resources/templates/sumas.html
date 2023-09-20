@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sumas</title>
+</head>
+<body>
+<p th:text=${x+y}></p>
+<p th:if="${x+y>10}">Resultado mayor que 10</p>
+<p th:unless="${x+y>10}">Resultado menor que 10</p>
+</body>
+</html>

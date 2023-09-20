@@ -1,8 +1,8 @@
 package com.example.Actividades.Logica;
 
 public class Usuario {
-    private String nombre;
-    private String edad;
+    public String nombre;
+    public String edad;
 
     public Usuario(String nombre, String edad) {
         this.nombre = nombre;
