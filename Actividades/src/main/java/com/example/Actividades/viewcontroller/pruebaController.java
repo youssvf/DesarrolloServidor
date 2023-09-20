@@ -52,7 +52,7 @@ public class pruebaController {
         model.addAttribute("usuarios",usuarios);
         return "array";
     }
-
+//
     @RequestMapping("/numeros")
     String numeros(Model model){
 
