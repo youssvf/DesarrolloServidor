@@ -1,12 +1,11 @@
 package com.example.Actividades.viewcontroller;
 
+import com.example.Actividades.Logica.Calculadora;
 import com.example.Actividades.Logica.Usuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 @Controller
 public class pruebaController {
     @RequestMapping("/index")
@@ -52,20 +51,44 @@ public class pruebaController {
         model.addAttribute("usuarios",usuarios);
         return "array";
     }
-//
+
     @RequestMapping("/numeros")
     String numeros(Model model){
 
         Integer[] numeros = new Integer[5];
+        Integer[] ordenados = new Integer[5];
+
         numeros[0] = 2;
         numeros[1] = 1;
         numeros[2] = 5;
         numeros[3] = 19;
         numeros[4] = 8;
 
+        int aux = 0;
+        for (int i = 0; i< numeros.length;i++){
+            for (int j = 0;j<numeros.length;j++){
+                if (numeros[i]<numeros[j]){
+                    aux = numeros[i];
+                    numeros[i] = numeros[j];
+                    numeros[j] = aux;
+                }
+            }
+        }
         model.addAttribute("numeros",numeros);
 
         return "numeros";
+    }
+
+    @GetMapping("/formulario2/{x}/{y}")
+    String resultado(Model model, @PathVariable Integer x, @PathVariable Integer y){
+        Calculadora calculadora = new Calculadora();
+        Integer resultadosuma = calculadora.suma(x,y);
+        Integer resultadomulti = calculadora.multiplicacion(x,y);
+
+        model.addAttribute("resultadosuma",resultadosuma);
+        model.addAttribute("resultadomulti",resultadomulti);
+
+        return "resultadohtml";
     }
 
 
